@@ -125,6 +125,10 @@ export class PosSlider{
         
         this.SLIDER.$elem.style.cursor = 'grab';
         this.SLIDER.TIMER.clear_timer();
+        
+        if(e.target.dataset.auto == "off"){
+            this.SLIDER.TIMER.on_btn();
+        }
 
         this.mousePos.end = e.clientX;
         const {start, end} = this.mousePos;

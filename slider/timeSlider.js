@@ -31,15 +31,18 @@ export class Timer{
 
     clear_timer(){
         clearTimeout(this.timer);
-        this.toggle_btn();
+        this.off_btn();
     }//clear_timer
 
-    toggle_btn(){
-        const auto = this.$btn.dataset.auto;
-        this.$btn.textContent = `자동 재생 ${auto}`;
-        const change = auto == "on" ? "off" : "on";
-        this.$btn.dataset.auto = change;
+    on_btn(){
+        this.$btn.textContent = `자동 재생 off`;
+        this.$btn.dataset.auto = "on";
 
-        if(change == "on"){this.run_timer();}
-    }//toggle_btn
+        setTimeout(()=>{this.run_timer();},1000);
+    }//on_btn
+
+    off_btn(){
+        this.$btn.textContent = `자동 재생 on`;
+        this.$btn.dataset.auto = "off";
+    }//off_btn
 }//class-Timer
